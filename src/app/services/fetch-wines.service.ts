@@ -13,4 +13,25 @@ export class FetchWinesService {
   public getWines(): Observable<WineItem[]> {
     return this.http.get<WineItem[]>(this.API_URL);
   }
+
+  public createWine(wine: WineItem) {
+    return this.http.post(this.API_URL, wine).subscribe(
+      (res) => console.log(res),
+      (error) => console.error(error)
+    );
+  }
+
+  public editWine(wine: WineItem) {
+    return this.http.put(`${this.API_URL}/${wine._id}`, wine).subscribe(
+      (res) => console.log(res),
+      (error) => console.error(error)
+    );
+  }
+
+  public deleteWine(wine: WineItem) {
+    return this.http.delete(`${this.API_URL}/${wine._id}`).subscribe(
+      (res) => console.log(res),
+      (error) => console.error(error)
+    );
+  }
 }

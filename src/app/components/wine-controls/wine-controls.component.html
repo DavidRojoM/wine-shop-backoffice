@@ -1,9 +1,9 @@
-<form action="" [formGroup]="wineControlForm" (ngSubmit)="send()">
+<form action="" [formGroup]="wineControlForm" (ngSubmit)="send()" (reset)="reset()">
 
 
   <mat-form-field appearance="outline">
     <mat-label>Nombre</mat-label>
-    <input type="text" matInput [errorStateMatcher]="matcher" formControlName="title" [value]="titleValue">
+    <input type="text" matInput [errorStateMatcher]="matcher" formControlName="title"  autocomplete="off">
     <mat-error *ngIf="wineControlForm.controls.title.touched && wineControlForm.controls.title.invalid">
       Debes insertar un nombre válido
     </mat-error>
@@ -11,14 +11,14 @@
 <!--  <label for="name">Nombre</label><input type="text" id="name" formControlName="name">-->
   <mat-form-field appearance="outline">
     <mat-label>Precio</mat-label>
-    <input type="number" matInput [errorStateMatcher]="matcher"  formControlName="price" [value]="priceValue">
+    <input type="number" matInput [errorStateMatcher]="matcher"  formControlName="price"  autocomplete="off">
     <mat-error *ngIf="wineControlForm.controls.price.touched && wineControlForm.controls.price.invalid">
       Debes insertar un precio superior a 0
     </mat-error>
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label>Url Imagen</mat-label>
-    <input type="text" matInput [errorStateMatcher]="matcher"  formControlName="img" [value]="imgValue">
+    <input type="text" matInput [errorStateMatcher]="matcher"  formControlName="img"  autocomplete="off">
     <mat-error *ngIf="wineControlForm.controls.img.touched && wineControlForm.controls.img.invalid">
       Debes insertar una URL válida
     </mat-error>

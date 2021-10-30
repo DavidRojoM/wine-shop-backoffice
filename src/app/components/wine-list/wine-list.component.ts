@@ -20,8 +20,7 @@ export class WineListComponent implements OnInit {
   }
 
   deleteItem($event: WineItem) {
-    console.log($event);
-    // this.wineService.deleteItem($event)
+    this.wineService.deleteWine($event);
   }
 
   setItemToBeUpdated($event: WineItem) {
@@ -29,6 +28,8 @@ export class WineListComponent implements OnInit {
   }
 
   createOrUpdate($event: WineItem) {
-    $event._id ? console.log('actualizar') : console.log('crear');
+    $event._id
+      ? this.wineService.editWine($event)
+      : this.wineService.createWine($event);
   }
 }

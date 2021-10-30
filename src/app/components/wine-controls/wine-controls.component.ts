@@ -9,19 +9,15 @@ import { WineItem } from '../../interfaces/wine-item';
   styleUrls: ['./wine-controls.component.scss'],
 })
 export class WineControlsComponent implements OnInit {
-  private _toUpdate!: WineItem;
+  public _toUpdate: WineItem | undefined;
   @Output() submitted: EventEmitter<WineItem> = new EventEmitter();
   matcher!: MyErrorStateMatcher;
 
-  titleValue = '';
-  priceValue: string = '0';
-  imgValue = '';
-
   wineControlForm = this.formBuiled.group({
-    title: [this.titleValue, [Validators.required, Validators.minLength(2)]],
-    price: [this.priceValue, [Validators.required, Validators.min(0)]],
+    title: ['', [Validators.required, Validators.minLength(2)]],
+    price: [0, [Validators.required, Validators.min(0)]],
     img: [
-      this.imgValue,
+      '',
       [
         Validators.pattern(
           '^(https?:\\/\\/)?([\\da-z.-]+)\\.([a-z.]{2,6})([\\/\\w .-]*)*\\/?$'
@@ -35,10 +31,6 @@ export class WineControlsComponent implements OnInit {
     this.matcher = new MyErrorStateMatcher();
   }
 
-  get toUpdate(): WineItem {
-    return this._toUpdate;
-  }
-
   @Input() set toUpdate(value: WineItem) {
     this._toUpdate = value;
     this.changeInputValues(value);
@@ -47,11 +39,14 @@ export class WineControlsComponent implements OnInit {
   changeInputValues(wine: WineItem) {
     if (wine) {
       const { title, price, img } = wine;
-      this.titleValue = title;
-      this.priceValue = String(price);
-      this.imgValue = img;
 
-      this.wineControlForm.updateValueAndValidity();
+      this.wineControlForm.patchValue({
+        title: title,
+        price: price,
+        img: img,
+      });
+
+      console.log(this.wineControlForm.value);
     }
   }
 
@@ -68,5 +63,9 @@ export class WineControlsComponent implements OnInit {
       console.log('Obj sin id para crear', this.wineControlForm.value);
       this.submitted.emit(this.wineControlForm.value);
     }
+  }
+  // TODO : cannot edit same wine after it has been edited
+  reset() {
+    this._toUpdate = undefined;
   }
 }
