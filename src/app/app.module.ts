@@ -5,18 +5,17 @@ import { AppComponent } from './app.component';
 import { WineItemComponent } from './components/wine-item/wine-item.component';
 import { WineListComponent } from './components/wine-list/wine-list.component';
 import { WineControlsComponent } from './components/wine-controls/wine-controls.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     WineItemComponent,
     WineListComponent,
-    WineControlsComponent
+    WineControlsComponent,
   ],
-  imports: [
-    BrowserModule
-  ],
+  imports: [BrowserModule, HttpClientModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

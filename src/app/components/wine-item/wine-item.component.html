@@ -1,0 +1,13 @@
+<div class="card">
+  <figure>
+    <img [src]="img" alt="">
+  </figure>
+  <div class="wine-data">
+    <h4>{{title}}</h4>
+    <span>{{price}}</span>
+  </div>
+  <div class="actions">
+    <button (click)="sendEvent()">Editar</button>
+    <button>Borrar</button>
+  </div>
+</div>
