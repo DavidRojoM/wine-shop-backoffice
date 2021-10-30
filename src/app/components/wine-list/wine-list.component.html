@@ -1,3 +1,5 @@
 <div class="container">
-  <app-wine-item *ngFor="let item of items" [item]="item" (update)="log($event)" (delete)="log($event)"></app-wine-item>
+  <app-wine-item *ngFor="let item of items" [item]="item" (update)="setItemToBeUpdated($event)" (delete)="deleteItem($event)"></app-wine-item>
 </div>
+<app-wine-controls [toUpdate]="itemToUpdate" (submitted)="createOrUpdate($event)"></app-wine-controls>
+

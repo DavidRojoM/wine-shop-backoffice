@@ -9,6 +9,7 @@ import { FetchWinesService } from '../../services/fetch-wines.service';
 })
 export class WineListComponent implements OnInit {
   items!: WineItem[];
+  itemToUpdate!: WineItem;
   constructor(private readonly wineService: FetchWinesService) {}
 
   ngOnInit(): void {
@@ -18,7 +19,16 @@ export class WineListComponent implements OnInit {
     );
   }
 
-  log($event: string) {
+  deleteItem($event: WineItem) {
     console.log($event);
+    // this.wineService.deleteItem($event)
+  }
+
+  setItemToBeUpdated($event: WineItem) {
+    this.itemToUpdate = $event;
+  }
+
+  createOrUpdate($event: WineItem) {
+    $event._id ? console.log('actualizar') : console.log('crear');
   }
 }

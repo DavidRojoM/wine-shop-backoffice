@@ -1,10 +1,10 @@
 <div class="card">
   <figure>
-    <img [src]="img" alt="">
+    <img [src]="wineData.img" alt="">
   </figure>
   <div class="wine-data">
-    <h4>{{title}}</h4>
-    <span>{{price}}</span>
+    <h4>{{wineData.title}}</h4>
+    <span>{{wineData.price}} €</span>
   </div>
   <div class="actions">
     <button (click)="updateItem()">Editar</button>
