@@ -42,35 +42,29 @@ export class WineControlsComponent implements OnInit {
   changeInputValues(wine: WineItem) {
     if (wine) {
       const { title, price, img } = wine;
-
       this.wineControlForm.patchValue({
         title: title,
         price: price,
         img: img,
       });
-
-      console.log(this.wineControlForm.value);
     }
   }
 
   createOrUpdate() {
-    if (this._toUpdate) {
-      const { _id } = this._toUpdate;
-      const obj = {
-        _id,
-        ...this.wineControlForm.value,
-      };
-      console.log('Obj con id para editar', obj);
-      this.submitted.emit(obj);
-    } else {
-      console.log('Obj sin id para crear', this.wineControlForm.value);
-      this.submitted.emit(this.wineControlForm.value);
-    }
-    this.wineControlForm.reset();
-    // this.wineControlForm.markAsUntouched();
+    const img =
+      this.wineControlForm.value.img || 'http://lorempixel.com/200/200/food/';
+    const newWine = {
+      ...this.wineControlForm.value,
+      img: img,
+    };
+    if (this._toUpdate) newWine._id = this._toUpdate._id;
+
+    this.submitted.emit(newWine);
+    this.reset();
   }
   // TODO : cannot edit same wine after it has been edited
   reset() {
+    this.wineControlForm.reset();
     this._toUpdate = undefined;
   }
 }

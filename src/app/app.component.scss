@@ -14,6 +14,7 @@ main{
   box-sizing: border-box;
   padding: 1rem;
   width: 80%;
+  min-height: calc(100vh - 100px);
   margin: 0 auto;
 }
 

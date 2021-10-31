@@ -25,7 +25,7 @@
 
   <button type="submit" [disabled]="!this.wineControlForm.valid" mat-button color="primary">Enviar</button>
 
-  <button mat-button color="warn" type="reset">Clear</button>
+  <button mat-button color="warn" type="reset">{{this._toUpdate?'Cancelar':'Borrar'}}</button>
 </form>
 
 
