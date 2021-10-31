@@ -1,0 +1,10 @@
+.card-container{
+  background-color: #930c36;
+  padding: 20px;
+  border-radius: 5px;
+  display: grid;
+  gap: 2rem;
+  grid-auto-rows: fit-content(100%);
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  text-align: center;
+}

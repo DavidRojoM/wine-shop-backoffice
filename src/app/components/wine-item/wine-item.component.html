@@ -1,13 +1,15 @@
-<div class="card">
-  <figure>
-    <img [src]="wineData.img" alt="">
-  </figure>
-  <div class="wine-data">
-    <h4>{{wineData.title}}</h4>
-    <span>{{wineData.price}} €</span>
-  </div>
-  <div class="actions">
-    <button (click)="updateItem()">Editar</button>
-    <button (click)="deleteItem()">Borrar</button>
-  </div>
-</div>
+<mat-card class="card">
+  <mat-card-header>
+    <mat-card-title>{{wineData.title}}</mat-card-title>
+  </mat-card-header>
+  <img mat-card-image [src]="wineData.img" [alt]="'Photo of ' + wineData.title">
+  <mat-card-content>
+    <span>
+      {{wineData.price}} €
+    </span>
+  </mat-card-content>
+  <mat-card-actions>
+        <button mat-button (click)="updateItem()">Editar</button>
+        <button mat-button (click)="deleteItem()">Borrar</button>
+  </mat-card-actions>
+</mat-card>

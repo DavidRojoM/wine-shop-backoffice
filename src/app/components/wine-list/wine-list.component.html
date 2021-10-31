@@ -1,4 +1,4 @@
-<div class="container">
+<div class="card-container">
   <app-wine-item *ngFor="let item of items" [item]="item" (update)="setItemToBeUpdated($event)" (delete)="deleteItem($event)"></app-wine-item>
 </div>
 <app-wine-controls [toUpdate]="itemToUpdate" (submitted)="createOrUpdate($event)"></app-wine-controls>

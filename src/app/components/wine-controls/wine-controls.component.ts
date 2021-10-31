@@ -14,8 +14,11 @@ export class WineControlsComponent implements OnInit {
   matcher!: MyErrorStateMatcher;
 
   wineControlForm = this.formBuiled.group({
-    title: ['', [Validators.required, Validators.minLength(2)]],
-    price: [0, [Validators.required, Validators.min(0)]],
+    title: [
+      '',
+      [Validators.required, Validators.minLength(2), Validators.maxLength(20)],
+    ],
+    price: ['', [Validators.required, Validators.min(0)]],
     img: [
       '',
       [

@@ -1,0 +1,14 @@
+.card{
+  box-sizing: border-box;
+  text-overflow: ellipsis;
+  overflow:hidden;
+  white-space:nowrap;
+  margin: 0 auto;
+
+  mat-card-header{
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+
