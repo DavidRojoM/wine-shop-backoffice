@@ -13,6 +13,10 @@ export class WineListComponent implements OnInit {
   constructor(private readonly wineService: FetchWinesService) {}
 
   ngOnInit(): void {
+    this.fetchWines();
+  }
+
+  private fetchWines() {
     this.wineService.getWines().subscribe(
       (res) => (this.items = res),
       (err) => console.error(err)
