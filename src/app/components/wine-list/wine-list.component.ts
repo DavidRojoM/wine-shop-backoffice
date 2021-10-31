@@ -10,7 +10,7 @@ import { FetchWinesService } from '../../services/fetch-wines.service';
 export class WineListComponent implements OnInit {
   items!: WineItem[];
   itemToUpdate!: WineItem;
-  constructor(private readonly wineService: FetchWinesService) {}
+  constructor(public wineService: FetchWinesService) {}
 
   ngOnInit(): void {
     this.fetchWines();
@@ -18,7 +18,7 @@ export class WineListComponent implements OnInit {
 
   private fetchWines() {
     this.wineService.getWines().subscribe(
-      (res) => (this.items = res),
+      (res) => (this.wineService.wines = res),
       (err) => console.error(err)
     );
   }
@@ -27,13 +27,13 @@ export class WineListComponent implements OnInit {
     this.wineService.deleteWine($event);
   }
 
-  setItemToBeUpdated($event: WineItem) {
-    this.itemToUpdate = $event;
+  setItemToBeUpdated(wine: WineItem) {
+    this.itemToUpdate = wine;
   }
 
-  createOrUpdate($event: WineItem) {
-    $event._id
-      ? this.wineService.editWine($event)
-      : this.wineService.createWine($event);
+  createOrUpdate(wine: WineItem) {
+    wine._id
+      ? this.wineService.editWine(wine)
+      : this.wineService.createWine(wine);
   }
 }

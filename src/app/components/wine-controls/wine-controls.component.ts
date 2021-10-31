@@ -53,7 +53,7 @@ export class WineControlsComponent implements OnInit {
     }
   }
 
-  send() {
+  createOrUpdate() {
     if (this._toUpdate) {
       const { _id } = this._toUpdate;
       const obj = {
@@ -66,6 +66,8 @@ export class WineControlsComponent implements OnInit {
       console.log('Obj sin id para crear', this.wineControlForm.value);
       this.submitted.emit(this.wineControlForm.value);
     }
+    this.wineControlForm.reset();
+    // this.wineControlForm.markAsUntouched();
   }
   // TODO : cannot edit same wine after it has been edited
   reset() {
