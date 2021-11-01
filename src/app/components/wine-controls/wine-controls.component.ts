@@ -62,7 +62,7 @@ export class WineControlsComponent implements OnInit {
     this.submitted.emit(newWine);
     this.reset();
   }
-  // TODO : cannot edit same wine after it has been edited
+
   reset() {
     this.wineControlForm.reset();
     this._toUpdate = undefined;

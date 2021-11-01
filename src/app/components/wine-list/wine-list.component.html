@@ -1,5 +1,12 @@
 <div class="card-container">
-  <app-wine-item *ngFor="let wine of wineService.wines" [item]="wine" (update)="setItemToBeUpdated($event)" (delete)="deleteItem($event)"></app-wine-item>
+  <app-wine-item
+    *ngFor="let wine of wineService.wines"
+    [item]="wine"
+    (update)="setItemToBeUpdated($event)"
+    (delete)="deleteItem($event)"
+  ></app-wine-item>
 </div>
-<app-wine-controls [toUpdate]="itemToUpdate" (submitted)="createOrUpdate($event)"></app-wine-controls>
-
+<app-wine-controls
+  [toUpdate]="itemToUpdate"
+  (submitted)="createOrUpdate($event)"
+></app-wine-controls>

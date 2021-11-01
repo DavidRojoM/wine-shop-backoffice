@@ -1,31 +1,74 @@
-<form action="" [formGroup]="wineControlForm" (ngSubmit)="createOrUpdate()" (reset)="reset()">
-
-
+<form
+  action=""
+  [formGroup]="wineControlForm"
+  (ngSubmit)="createOrUpdate()"
+  (reset)="reset()"
+>
   <mat-form-field appearance="outline">
     <mat-label>Nombre</mat-label>
-    <input type="text" matInput [errorStateMatcher]="matcher" formControlName="title"  autocomplete="off">
-    <mat-error *ngIf="wineControlForm.controls.title.touched && wineControlForm.controls.title.invalid">
+    <input
+      type="text"
+      matInput
+      [errorStateMatcher]="matcher"
+      formControlName="title"
+      autocomplete="off"
+    />
+    <mat-error
+      *ngIf="
+        wineControlForm.controls.title.touched &&
+        wineControlForm.controls.title.invalid
+      "
+    >
       Debes insertar un nombre válido
     </mat-error>
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label>Precio</mat-label>
-    <input type="number" matInput [errorStateMatcher]="matcher"  formControlName="price"  autocomplete="off">
-    <mat-error *ngIf="wineControlForm.controls.price.touched && wineControlForm.controls.price.invalid">
+    <input
+      type="number"
+      matInput
+      [errorStateMatcher]="matcher"
+      formControlName="price"
+      autocomplete="off"
+    />
+    <mat-error
+      *ngIf="
+        wineControlForm.controls.price.touched &&
+        wineControlForm.controls.price.invalid
+      "
+    >
       Debes insertar un precio superior a 0
     </mat-error>
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label>Url Imagen</mat-label>
-    <input type="text" matInput [errorStateMatcher]="matcher"  formControlName="img"  autocomplete="off">
-    <mat-error *ngIf="wineControlForm.controls.img.touched && wineControlForm.controls.img.invalid">
+    <input
+      type="text"
+      matInput
+      [errorStateMatcher]="matcher"
+      formControlName="img"
+      autocomplete="off"
+    />
+    <mat-error
+      *ngIf="
+        wineControlForm.controls.img.touched &&
+        wineControlForm.controls.img.invalid
+      "
+    >
       Debes insertar una URL válida
     </mat-error>
   </mat-form-field>
 
-  <button type="submit" [disabled]="!this.wineControlForm.valid" mat-button color="primary">Enviar</button>
+  <button
+    type="submit"
+    [disabled]="!this.wineControlForm.valid"
+    mat-button
+    color="primary"
+  >
+    {{ this._toUpdate ? "Editar" : "Añadir" }}
+  </button>
 
-  <button mat-button color="warn" type="reset">{{this._toUpdate?'Cancelar':'Borrar'}}</button>
+  <button mat-button color="warn" type="reset">
+    {{ this._toUpdate ? "Cancelar" : "Borrar" }}
+  </button>
 </form>
-
-

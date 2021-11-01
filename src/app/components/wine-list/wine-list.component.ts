@@ -8,7 +8,6 @@ import { FetchWinesService } from '../../services/fetch-wines.service';
   styleUrls: ['./wine-list.component.scss'],
 })
 export class WineListComponent implements OnInit {
-  items!: WineItem[];
   itemToUpdate!: WineItem;
   constructor(public wineService: FetchWinesService) {}
 

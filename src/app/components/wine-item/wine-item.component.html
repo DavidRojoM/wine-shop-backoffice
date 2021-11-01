@@ -1,17 +1,23 @@
 <mat-card class="card">
   <mat-card-header>
-    <mat-card-title>{{wineData.title}}</mat-card-title>
+    <mat-card-title>{{ wineData.title }}</mat-card-title>
   </mat-card-header>
   <div class="img-container">
-    <img mat-card-image [src]="wineData.img" [alt]="'Photo of ' + wineData.title">
+    <img
+      mat-card-image
+      [src]="wineData.img"
+      [alt]="'Photo of ' + wineData.title"
+    />
   </div>
   <mat-card-content>
-    <span>
-      {{wineData.price}} €
-    </span>
+    <span> {{ wineData.price }} € </span>
   </mat-card-content>
   <mat-card-actions>
-        <button  mat-raised-button color="primary" (click)="updateItem()">Editar</button>
-        <button mat-raised-button color="warn" (click)="deleteItem()">Borrar</button>
+    <button mat-raised-button color="primary" (click)="updateItem()">
+      Editar
+    </button>
+    <button mat-raised-button color="warn" (click)="deleteItem()">
+      Borrar
+    </button>
   </mat-card-actions>
 </mat-card>
