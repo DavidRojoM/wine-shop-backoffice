@@ -8,26 +8,21 @@ import { WineItem } from '../../interfaces/wine-item';
 })
 export class WineItemComponent implements OnInit {
   @Input() item!: WineItem;
-  @Output() update: EventEmitter<WineItem> = new EventEmitter();
-  @Output() delete: EventEmitter<WineItem> = new EventEmitter();
+  @Output() private update: EventEmitter<WineItem> = new EventEmitter();
+  @Output() private delete: EventEmitter<WineItem> = new EventEmitter();
 
-  wineData: WineItem = {
-    _id: '',
-    img: '',
-    title: '',
-    price: 0,
-  };
+  wineData!: WineItem;
   constructor() {}
 
   ngOnInit(): void {
     this.wineData = { ...this.item };
   }
 
-  updateItem() {
+  public updateItem() {
     this.update.emit(this.wineData);
   }
 
-  deleteItem() {
+  public deleteItem() {
     this.delete.emit(this.wineData);
   }
 }

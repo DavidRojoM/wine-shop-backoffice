@@ -12,6 +12,7 @@
       [errorStateMatcher]="matcher"
       formControlName="title"
       autocomplete="off"
+      maxlength="20"
     />
     <mat-error
       *ngIf="
@@ -65,10 +66,10 @@
     mat-button
     color="primary"
   >
-    {{ this._toUpdate ? "Editar" : "Añadir" }}
+    {{ this.toUpdate ? "Editar" : "Añadir" }}
   </button>
 
   <button mat-button color="warn" type="reset">
-    {{ this._toUpdate ? "Cancelar" : "Borrar" }}
+    {{ this.toUpdate ? "Cancelar" : "Borrar" }}
   </button>
 </form>

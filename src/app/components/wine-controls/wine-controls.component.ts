@@ -9,11 +9,10 @@ import { WineItem } from '../../interfaces/wine-item';
   styleUrls: ['./wine-controls.component.scss'],
 })
 export class WineControlsComponent implements OnInit {
-  public _toUpdate: WineItem | undefined;
-  @Output() submitted: EventEmitter<WineItem> = new EventEmitter();
-  matcher!: MyErrorStateMatcher;
-
-  wineControlForm = this.formBuiled.group({
+  private _toUpdate: WineItem | undefined;
+  @Output() private submitted: EventEmitter<WineItem> = new EventEmitter();
+  public matcher!: MyErrorStateMatcher;
+  public wineControlForm = this.formBuiled.group({
     title: [
       '',
       [Validators.required, Validators.minLength(2), Validators.maxLength(20)],
@@ -28,43 +27,41 @@ export class WineControlsComponent implements OnInit {
       ],
     ],
   });
+
   constructor(private formBuiled: FormBuilder) {}
 
   ngOnInit(): void {
     this.matcher = new MyErrorStateMatcher();
   }
 
-  @Input() set toUpdate(value: WineItem) {
+  @Input() public set toUpdate(value: WineItem | undefined) {
     this._toUpdate = value;
     this.changeInputValues(value);
   }
 
-  changeInputValues(wine: WineItem) {
-    if (wine) {
-      const { title, price, img } = wine;
-      this.wineControlForm.patchValue({
-        title: title,
-        price: price,
-        img: img,
-      });
-    }
+  public get toUpdate(): WineItem | undefined {
+    return this._toUpdate;
   }
 
-  createOrUpdate() {
+  private changeInputValues(wine: WineItem | undefined) {
+    if (wine) this.wineControlForm.patchValue({ ...wine });
+  }
+
+  public createOrUpdate() {
     const img =
       this.wineControlForm.value.img || 'http://lorempixel.com/200/200/food/';
     const newWine = {
       ...this.wineControlForm.value,
       img: img,
     };
-    if (this._toUpdate) newWine._id = this._toUpdate._id;
+    if (this.toUpdate) newWine._id = this.toUpdate._id;
 
     this.submitted.emit(newWine);
     this.reset();
   }
 
-  reset() {
+  public reset() {
     this.wineControlForm.reset();
-    this._toUpdate = undefined;
+    this.toUpdate = undefined;
   }
 }

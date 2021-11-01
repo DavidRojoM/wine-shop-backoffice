@@ -8,7 +8,8 @@ import { FetchWinesService } from '../../services/fetch-wines.service';
   styleUrls: ['./wine-list.component.scss'],
 })
 export class WineListComponent implements OnInit {
-  itemToUpdate!: WineItem;
+  public itemToUpdate!: WineItem;
+
   constructor(public wineService: FetchWinesService) {}
 
   ngOnInit(): void {
@@ -22,16 +23,16 @@ export class WineListComponent implements OnInit {
     );
   }
 
-  deleteItem($event: WineItem) {
+  public deleteItem($event: WineItem) {
     this.wineService.deleteWine($event);
   }
 
-  setItemToBeUpdated(wine: WineItem) {
+  public setItemToBeUpdated(wine: WineItem) {
     this.itemToUpdate = wine;
     // TODO: Event problem may be here(README.md, 3)
   }
 
-  createOrUpdate(wine: WineItem) {
+  public createOrUpdate(wine: WineItem) {
     wine._id
       ? this.wineService.editWine(wine)
       : this.wineService.createWine(wine);

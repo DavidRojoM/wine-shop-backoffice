@@ -12,14 +12,14 @@
     justify-content: center;
   }
 
+  img {
+    height: 100%;
+    object-fit: cover;
+  }
+
   .img-container {
     margin: 15px 0;
     height: 250px;
     width: 100%;
-
-    img {
-      height: 100%;
-      object-fit: cover;
-    }
   }
 }
