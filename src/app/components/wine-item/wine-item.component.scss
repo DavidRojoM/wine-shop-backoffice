@@ -2,18 +2,27 @@
   box-sizing: border-box;
   text-overflow: ellipsis;
   overflow:hidden;
+  padding: 20px 0;
   white-space:nowrap;
   margin: 0 auto;
+  height: 100%;
 
   mat-card-header{
     align-items: center;
     justify-content: center;
   }
 
-  img{
+  .img-container{
+    margin: 15px 0;
     height: 250px;
-    object-fit: cover;
+    width: 100%;
+
+    img{
+      height: 100%;
+      object-fit: cover;
+    }
   }
+
 }
 
 
