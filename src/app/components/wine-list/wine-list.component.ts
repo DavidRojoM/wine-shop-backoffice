@@ -28,8 +28,7 @@ export class WineListComponent implements OnInit {
   }
 
   public setItemToBeUpdated(wine: WineItem) {
-    this.itemToUpdate = wine;
-    // TODO: Event problem may be here(README.md, 3)
+    this.itemToUpdate = { ...wine };
   }
 
   public createOrUpdate(wine: WineItem) {

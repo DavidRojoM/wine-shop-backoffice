@@ -2,7 +2,7 @@
 
 1. - [ ] Add pagination.
 2. - [ ] Add seeker
-3. - [ ] Find out why it is not possible to send same event twice in a row
+3. - [x] Find out why it is not possible to send same event twice in a row
 4. - [ ] Find out why text-overflow: ellipsis won't work in card headers.
 
 ### SET-UP
